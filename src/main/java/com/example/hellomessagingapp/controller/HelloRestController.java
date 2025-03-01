@@ -1,10 +1,7 @@
 package com.example.hellomessagingapp.controller;
+import com.example.hellomessagingapp.dto.UserDTO;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PathVariable;
 @RestController
 public class HelloRestController {
     @RequestMapping("/")
@@ -22,4 +19,8 @@ public class HelloRestController {
         return "Hello " + name + " from BridgeLabz";
     }
 
+    @PostMapping("/post")
+    public String sayHelloWithPost(@RequestBody UserDTO user) {
+        return "Hello " + user.getFirstName() + " " + user.getLastName() + " from BridgeLabz";
+    }
 }
